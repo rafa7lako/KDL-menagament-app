@@ -1,0 +1,35 @@
+input[type='number'] {
+  -moz-appearance: textfield;
+  appearance: textfield;
+}
+
+input[type='number']::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+input[type='number']::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --color-dirty-white: rgb(249 250 251);
+  --color-cold-white: rgb(224 242 254);
+  --color-blue: rgb(47 111 235);
+}
+
+a {
+  text-decoration: none;
+  color: #303030;
+}
+
+li {
+  list-style: none;
+}

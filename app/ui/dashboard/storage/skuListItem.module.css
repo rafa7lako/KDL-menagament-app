@@ -1,0 +1,76 @@
+.skuListItem {
+    background-color: white;
+    color: var(--color-blue);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    border-radius: 0.375rem;
+    filter: drop-shadow(0 10px 8px rgb(0 0 0 / 0.04)) drop-shadow(0 4px 3px rgb(0 0 0 / 0.1));
+    transition: all 0.3s ease;
+    padding: 1rem;
+}
+
+.skuListItem:hover {
+    filter: drop-shadow(0 10px 8px rgb(47 111 235 / 0.2)) drop-shadow(0 4px 3px rgb(47 111 235 / 0.8));
+    transform: translateY(-5px);
+}
+
+.paragraph {
+    padding: 0.5rem 1rem;
+    color: #333;
+    text-align: center;
+    font-size: 1rem;
+    line-height: 1.5;
+}
+
+.actionButtonContainer {
+    display: flex;
+    width: 100%;
+    gap: 0.5rem; /* Reduce gap between smaller buttons */
+    justify-content: center; /* Center the buttons */
+}
+
+.actionButton {
+    background-color: var(--color-blue);
+    border: none;
+    width: 1.2rem; /* Reduced size */
+    height: 1.2rem; /* Reduced size */
+    transition: background-color 0.2s ease, transform 0.2s ease;
+    cursor: pointer;
+    color: #fff;
+    border-radius: 50%; /* Circular button */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 0.75rem; /* Adjusted font size for smaller button */
+    box-shadow: 0 3px 5px rgba(0, 0, 0, 0.1);
+}
+
+.actionButton svg {
+    width: 0.8rem; /* Smaller icon size */
+    height: 0.8rem; /* Smaller icon size */
+}
+
+.actionButton:hover {
+    background-color: #2f6feb; /* Lighter blue for hover effect */
+    transform: scale(1.1); /* Slight scaling on hover */
+    box-shadow: 0 5px 7px rgba(0, 0, 0, 0.2); /* Slightly deeper shadow on hover */
+}
+
+.editBtn {
+    background-color: #2f6feb; /* Adjusted to blue */
+}
+
+.deleteBtn {
+    background-color: #EB4C2F; /* Red for delete */
+}
+
+.editBtn:hover {
+    background-color: #47eb2f; /* Brighter green on hover */
+}
+
+.deleteBtn:hover {
+    background-color: #ff5a3c; /* Slightly brighter red on hover */
+}
