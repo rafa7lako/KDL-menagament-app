@@ -35,7 +35,7 @@ export default function Page() {
 									<SkuListItem sku={sku} key={sku} />
 								))}
 							</ul>
-							<AddSkuBtn />
+							<AddSkuBtn localisation={localisation.localisation}/>
 						</li>
 					))}
 				</ul>
