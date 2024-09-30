@@ -25,37 +25,3 @@
 	padding: 0 1rem;
 }
 
-.localisationListContainer {
-	display: flex;
-	background-color: var(--color-dirty-white);
-	padding: 1rem;
-	border-radius: 0.375rem;
-	box-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
-}
-
-.localisationList {
-	width: 100%;
-}
-
-.localisationListItem {
-	display: flex;
-	gap: 1rem;
-	padding: 0.5rem 0;
-	border-bottom: 0.1rem solid var(--color-cold-white);
-}
-
-.localisationListItem:last-child {
-	border-bottom: none;
-}
-
-.skuList {
-	display: flex;
-	justify-content: flex-start;
-	gap: 1rem;
-}
-
-.localisationTitle {
-	align-self: center;
-	color: var(--color-blue);
-}
-

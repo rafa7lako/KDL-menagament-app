@@ -2,9 +2,10 @@ import { getMergedLocalisationSkuData } from "@/lib/keyboards";
 import classes from "./page.module.css";
 import SkuListItem from "../../ui/dashboard/storage/skuListItem";
 import AddSkuBtn from "@/app/ui/dashboard/storage/addSkuBtn";
+import LocalisationList from "@/app/ui/dashboard/storage/localisationList";
 
 export default function Page() {
-	const mergedData = getMergedLocalisationSkuData();
+	let mergedData = getMergedLocalisationSkuData();
 
 	return (
 		<main>
@@ -20,26 +21,7 @@ export default function Page() {
 				></input>
 				<button className={classes.searchButton}>Icon</button>
 			</form>
-			<div className={classes.localisationListContainer}>
-				<ul className={classes.localisationList}>
-					{mergedData.map((localisation) => (
-						<li
-							className={classes.localisationListItem}
-							key={localisation.localisation}
-						>
-							<p className={classes.localisationTitle}>
-								{localisation.localisation}
-							</p>
-							<ul className={classes.skuList}>
-								{localisation.skus.map((sku) => (
-									<SkuListItem sku={sku} key={sku} />
-								))}
-							</ul>
-							<AddSkuBtn localisation={localisation.localisation}/>
-						</li>
-					))}
-				</ul>
-			</div>
+			<LocalisationList mergedKeyboardData={mergedData}/>
 		</main>
 	);
 }
