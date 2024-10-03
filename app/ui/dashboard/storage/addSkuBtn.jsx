@@ -23,7 +23,7 @@ export default function AddSkuBtn({ localisation, refreshData }) { // Accept ref
         await createSkuItem(formData, localisation); // Ensure you import createSkuItem correctly
 
         // After form submission, refresh the parent component data
-        refreshData(); // This will trigger the parent component to re-render with updated data
+        refreshData(isClicked); // This will trigger the parent component to re-render with updated data
 
         // Reset the SKU input field and close the form
         setSkuValue("");

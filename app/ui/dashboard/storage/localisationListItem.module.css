@@ -1,0 +1,21 @@
+.localisationListItem {
+	display: flex;
+	gap: 1rem;
+	padding: 0.5rem 0;
+	border-bottom: 0.1rem solid var(--color-cold-white);
+}
+
+.localisationListItem:last-child {
+	border-bottom: none;
+}
+
+.skuList {
+	display: flex;
+	justify-content: flex-start;
+	gap: 1rem;
+}
+
+.localisationTitle {
+	align-self: center;
+	color: var(--color-blue);
+}
