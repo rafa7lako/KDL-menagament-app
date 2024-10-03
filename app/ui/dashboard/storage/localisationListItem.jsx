@@ -11,6 +11,7 @@ import { fetchSkusByLocalisation } from '@/lib/actions';  // Update with actual 
 export default function LocalisationListItem({ localisation }) {
     const [skus, setSkus] = useState([]);  // State for the SKUs
     const [addSkuFormSubmitted, setAddSkuFormSubmitted] = useState(false);
+    const [deleteBtnClicked, setDeleteButtonClicked] = useState(false)
 
     function refreshData(isSubmitted) {
         setAddSkuFormSubmitted(isSubmitted);
@@ -30,14 +31,15 @@ export default function LocalisationListItem({ localisation }) {
     // Use useEffect to fetch SKUs when localisation or form submission changes
     useEffect(() => {
         loadSkus();
-    }, [localisation.localisation, addSkuFormSubmitted]);
+        setDeleteButtonClicked(false)
+    }, [localisation.localisation, addSkuFormSubmitted, deleteBtnClicked]);
 
     return (
         <li className={classes.localisationListItem}>
             <p className={classes.localisationTitle}>{localisation.localisation}</p>
             <ul className={classes.skuList}>
                 {skus.map((sku) => (
-                    <SkuListItem sku={sku} key={sku} />
+                    <SkuListItem sku={sku} key={sku} setDeleteButtonClicked={setDeleteButtonClicked} />
                 ))}
             </ul>
             <AddSkuBtn
