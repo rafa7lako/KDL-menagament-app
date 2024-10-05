@@ -39,7 +39,7 @@ export default function LocalisationListItem({ localisation }) {
             <p className={classes.localisationTitle}>{localisation.localisation}</p>
             <ul className={classes.skuList}>
                 {skus.map((sku) => (
-                    <SkuListItem sku={sku} key={sku} setDeleteButtonClicked={setDeleteButtonClicked} />
+                    <SkuListItem sku={sku} key={sku} setDeleteButtonClicked={setDeleteButtonClicked} localisation={localisation.localisation} />
                 ))}
             </ul>
             <AddSkuBtn

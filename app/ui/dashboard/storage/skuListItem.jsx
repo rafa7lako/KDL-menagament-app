@@ -3,8 +3,16 @@
 import { binIcon, editIcon } from "@/app/icons";
 import classes from "./skuListItem.module.css";
 import { deleteSkuByValue } from "@/lib/actions"; // Import the delete action
+import { useState } from "react";
+import AddSkuForm from "./addSkuForm/addSkuForm";
 
-export default function SkuListItem({ sku, setDeleteButtonClicked }) {
+export default function SkuListItem({
+	sku,
+	setDeleteButtonClicked,
+	localisation,
+}) {
+	const [editBtnClicked, setEditBtnClicked] = useState(false);
+
 	async function handleDelete() {
 		if (confirm(`Are you sure you want to delete SKU: ${sku}?`)) {
 			try {
@@ -19,20 +27,41 @@ export default function SkuListItem({ sku, setDeleteButtonClicked }) {
 		setDeleteButtonClicked(true);
 	}
 
+	function editBtnHandler() {
+		setEditBtnClicked(true);
+	}
+
+	
+
 	return (
-		<li className={classes.skuListItem}>
-			<p className={classes.paragraph}>{sku}</p>
-			<div className={classes.actionButtonContainer}>
-				<button className={`${classes.actionButton} ${classes.editBtn}`}>
-					<i>{editIcon}</i>
-				</button>
-				<button
-					className={`${classes.actionButton} ${classes.deleteBtn}`}
-					onClick={handleDelete} // Call handleDelete when the delete button is clicked
-				>
-					<i>{binIcon}</i>
-				</button>
-			</div>
-		</li>
+		<>
+			{!editBtnClicked ? (
+				<li className={classes.skuListItem}>
+					<p className={classes.paragraph}>{sku}</p>
+					<div className={classes.actionButtonContainer}>
+						<button
+							className={`${classes.actionButton} ${classes.editBtn}`}
+							onClick={editBtnHandler}
+						>
+							<i>{editIcon}</i>
+						</button>
+						<button
+							className={`${classes.actionButton} ${classes.deleteBtn}`}
+							onClick={handleDelete} // Call handleDelete when the delete button is clicked
+						>
+							<i>{binIcon}</i>
+						</button>
+					</div>
+				</li>
+			) : (
+				<AddSkuForm
+					localisation={localisation}
+					placeholderText={sku}
+					setEditBtnClicked={setEditBtnClicked}
+					currentEditSku={sku}
+					editBtnClicked={editBtnClicked}
+				/>
+			)}
+		</>
 	);
 }
