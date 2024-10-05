@@ -31,6 +31,10 @@ export default function SkuListItem({
 		setEditBtnClicked(true);
 	}
 
+	function editBtnClickedHandler(isClicked) {
+		setEditBtnClicked(isClicked)
+	}
+
 	
 
 	return (
@@ -57,7 +61,7 @@ export default function SkuListItem({
 				<AddSkuForm
 					localisation={localisation}
 					placeholderText={sku}
-					setEditBtnClicked={setEditBtnClicked}
+					editBtnClickedHandler={editBtnClickedHandler}
 					currentEditSku={sku}
 					editBtnClicked={editBtnClicked}
 				/>

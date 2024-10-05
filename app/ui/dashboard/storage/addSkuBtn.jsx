@@ -8,22 +8,30 @@ import AddSkuForm from "./addSkuForm/addSkuForm";
 
 export default function AddSkuBtn({ localisation, refreshData }) {
 	// Accept refreshData as a prop
-	const [isClicked, setIsClicked] = useState(false);
+	const [isAddBtnClicked, setIsAddBtnClicked] = useState(false);
 
 	function clickHandler() {
-		setIsClicked((prevState) => !prevState);
+		setIsAddBtnClicked(true);
+	}
+
+	function closeFormHandler(isClicked) {
+		setIsAddBtnClicked(isClicked)
 	}
 
 	return (
 		<>
-			{isClicked && (
+			{isAddBtnClicked && (
 				<AddSkuForm
 					localisation={localisation}
-					isCloseBtnClicked={clickHandler}
+					// isCloseBtnClicked={clickHandler}
 					refreshData={refreshData}
+					isAddBtnClicked={isAddBtnClicked}
+					closeFormHandler={closeFormHandler}
 				/>
 			)}
-			<button onClick={clickHandler}>{plusIcon}</button>
+			<button onClick={clickHandler} aria-label="Add SKU">
+				{plusIcon}
+			</button>
 		</>
 	);
 }
