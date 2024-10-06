@@ -25,3 +25,19 @@
 	padding: 0 1rem;
 }
 
+.loading {
+	text-align: center;
+	animation: loading 1.2s ease-in-out infinite;
+}
+
+@keyframes loading {
+	0% {
+		color: var(--color-dirty-white);
+	}
+	50% {
+		color: var(--color-cold-white);
+	}
+	100% {
+		color: var(--color-dirty-white);
+	}
+}

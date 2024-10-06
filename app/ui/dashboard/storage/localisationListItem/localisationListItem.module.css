@@ -1,5 +1,6 @@
 .localisationListItem {
 	display: flex;
+	flex-direction: row;
 	gap: 1rem;
 	padding: 0.5rem 0;
 	border-bottom: 0.1rem solid var(--color-cold-white);
@@ -18,4 +19,14 @@
 .localisationTitle {
 	align-self: center;
 	color: var(--color-blue);
+}
+
+@media (max-width: 768px) {
+	.localisationListItem {
+		flex-direction: column;
+	}
+
+	.skuList {
+		flex-direction: column;
+	}
 }

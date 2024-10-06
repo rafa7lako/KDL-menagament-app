@@ -4,7 +4,7 @@ import { plusIcon } from "@/app/icons";
 import { useState } from "react";
 import classes from "./addSkuBtn.module.css";
 import { createSkuItem } from "@/lib/actions";
-import AddSkuForm from "./addSkuForm/addSkuForm";
+import AddSkuForm from "../addSkuForm/addSkuForm";
 
 export default function AddSkuBtn({ localisation, refreshData }) {
 	// Accept refreshData as a prop
@@ -15,7 +15,7 @@ export default function AddSkuBtn({ localisation, refreshData }) {
 	}
 
 	function closeFormHandler() {
-		setIsAddBtnClicked(prevState => !prevState)
+		setIsAddBtnClicked((prevState) => !prevState);
 	}
 
 	return (

@@ -4,13 +4,13 @@ import { binIcon, editIcon } from "@/app/icons";
 import classes from "./skuListItem.module.css";
 import { deleteSkuByValue } from "@/lib/actions"; // Import the delete action
 import { useState } from "react";
-import AddSkuForm from "./addSkuForm/addSkuForm";
+import AddSkuForm from "../addSkuForm/addSkuForm";
 
 export default function SkuListItem({
 	sku,
 	setDeleteButtonClicked,
 	localisation,
-	refreshData
+	refreshData,
 }) {
 	const [editBtnClicked, setEditBtnClicked] = useState(false);
 
@@ -29,14 +29,12 @@ export default function SkuListItem({
 	}
 
 	function editBtnHandler() {
-		setEditBtnClicked(prevState => !prevState);
+		setEditBtnClicked((prevState) => !prevState);
 	}
 
 	function editBtnClickedHandler() {
-		setEditBtnClicked(prevState => !prevState)
+		setEditBtnClicked((prevState) => !prevState);
 	}
-
-	
 
 	return (
 		<>
