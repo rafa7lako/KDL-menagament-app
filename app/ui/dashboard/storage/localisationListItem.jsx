@@ -13,8 +13,8 @@ export default function LocalisationListItem({ localisation }) {
     const [addSkuFormSubmitted, setAddSkuFormSubmitted] = useState(false);
     const [deleteBtnClicked, setDeleteButtonClicked] = useState(false)
 
-    function refreshData(isSubmitted) {
-        setAddSkuFormSubmitted(isSubmitted);
+    function refreshData() {
+        setAddSkuFormSubmitted(prevState=>!prevState);
         console.log('Refresh successful');
     }
 
@@ -39,7 +39,7 @@ export default function LocalisationListItem({ localisation }) {
             <p className={classes.localisationTitle}>{localisation.localisation}</p>
             <ul className={classes.skuList}>
                 {skus.map((sku) => (
-                    <SkuListItem sku={sku} key={sku} setDeleteButtonClicked={setDeleteButtonClicked} localisation={localisation.localisation} />
+                    <SkuListItem sku={sku} key={sku} refreshData={refreshData} setDeleteButtonClicked={setDeleteButtonClicked} localisation={localisation.localisation} />
                 ))}
             </ul>
             <AddSkuBtn

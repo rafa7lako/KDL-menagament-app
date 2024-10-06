@@ -11,9 +11,11 @@ export default function AddSkuForm({
 	closeFormHandler,
 	currentEditSku,
 	editBtnClicked,
-	editBtnClickedHandler,
+	onEditClick,
 }) {
-	const [skuValue, setSkuValue] = useState(editBtnClicked ? currentEditSku : ""); // State to hold the SKU input value
+	const [skuValue, setSkuValue] = useState(
+		editBtnClicked ? currentEditSku : ""
+	);
 
 	// Function to handle form submission for adding a new item
 	async function handleSubmit(event) {
@@ -23,7 +25,9 @@ export default function AddSkuForm({
 		await createSkuItem({ sku: skuValue }, localisation);
 
 		// After form submission, refresh the parent component data
-		refreshData(); // Trigger parent component to re-render with updated data
+		if (refreshData) {
+			refreshData(); // Trigger parent component to re-render with updated data
+		}
 
 		// Reset the SKU input field
 		setSkuValue("");
@@ -46,14 +50,20 @@ export default function AddSkuForm({
 
 		// Close the form after successful submission
 		onClose();
-		editBtnClickedHandler(false); // Reset edit state only after editing
+		// onEditClick(false); // Reset edit state only after editing
 	}
 
 	// Function to handle closing the form when "x" is clicked
-	function onClose () {
+	function onClose() {
 		// setIsClicked(true);
-		closeFormHandler(false);
-		editBtnClickedHandler(false);
+		if (closeFormHandler) {
+			closeFormHandler();
+		}
+
+		if (onEditClick) {
+			// I got a bug here telling me the function doesn't exist. That's why i wrote it like this.
+			onEditClick();
+		}
 		// Close the form when cancel is clicked
 	}
 

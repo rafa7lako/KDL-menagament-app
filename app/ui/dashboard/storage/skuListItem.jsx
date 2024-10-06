@@ -10,6 +10,7 @@ export default function SkuListItem({
 	sku,
 	setDeleteButtonClicked,
 	localisation,
+	refreshData
 }) {
 	const [editBtnClicked, setEditBtnClicked] = useState(false);
 
@@ -28,11 +29,11 @@ export default function SkuListItem({
 	}
 
 	function editBtnHandler() {
-		setEditBtnClicked(true);
+		setEditBtnClicked(prevState => !prevState);
 	}
 
-	function editBtnClickedHandler(isClicked) {
-		setEditBtnClicked(isClicked)
+	function editBtnClickedHandler() {
+		setEditBtnClicked(prevState => !prevState)
 	}
 
 	
@@ -61,9 +62,10 @@ export default function SkuListItem({
 				<AddSkuForm
 					localisation={localisation}
 					placeholderText={sku}
-					editBtnClickedHandler={editBtnClickedHandler}
+					onEditClick={editBtnClickedHandler}
 					currentEditSku={sku}
 					editBtnClicked={editBtnClicked}
+					refreshData={refreshData}
 				/>
 			)}
 		</>

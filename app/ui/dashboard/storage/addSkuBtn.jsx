@@ -14,8 +14,8 @@ export default function AddSkuBtn({ localisation, refreshData }) {
 		setIsAddBtnClicked(true);
 	}
 
-	function closeFormHandler(isClicked) {
-		setIsAddBtnClicked(isClicked)
+	function closeFormHandler() {
+		setIsAddBtnClicked(prevState => !prevState)
 	}
 
 	return (
