@@ -43,7 +43,9 @@ export default function AddSkuForm({
 		await editSkuItem({ sku: skuValue }, currentEditSku, localisation);
 
 		// After form submission, refresh the parent component data
-		refreshData();
+		if (refreshData) {
+			refreshData(); // Trigger parent component to re-render with updated data
+		}
 
 		// Reset the SKU input field
 		setSkuValue("");

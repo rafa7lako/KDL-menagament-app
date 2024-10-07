@@ -32,12 +32,12 @@
 
 @keyframes loading {
 	0% {
-		color: var(--color-dirty-white);
+		color: var(--color-blue);
 	}
 	50% {
 		color: var(--color-cold-white);
 	}
 	100% {
-		color: var(--color-dirty-white);
+		color: var(--color-blue);
 	}
 }
