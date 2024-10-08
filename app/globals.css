@@ -33,3 +33,15 @@ a {
 li {
   list-style: none;
 }
+
+.flex {
+  display: flex;
+  gap: 1rem;
+  /* flex-wrap: wrap */
+}
+
+@media (max-width: 768px) {
+  .flex {
+    flex-direction: column;
+  }
+}

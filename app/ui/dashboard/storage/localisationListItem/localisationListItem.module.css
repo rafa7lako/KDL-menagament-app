@@ -1,5 +1,6 @@
 .localisationListItem {
 	display: flex;
+	flex-wrap: wrap;
 	flex-direction: row;
 	gap: 1rem;
 	padding: 0.5rem 0;
@@ -12,6 +13,7 @@
 
 .skuList {
 	display: flex;
+	flex-wrap: wrap;
 	justify-content: flex-start;
 	gap: 1rem;
 }

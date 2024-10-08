@@ -1,7 +1,8 @@
 import { getMergedLocalisationSkuData } from "@/lib/keyboards";
 import classes from "./page.module.css";
 import { Suspense } from "react";
-import LocalisationList from "@/app/ui/dashboard/storage/localisationList/localisationList";
+
+import LocalisationOverview from "@/app/ui/dashboard/storage/localisationOverview/localisationOverview";
 
 
 async function Keyboards() {
@@ -9,7 +10,7 @@ async function Keyboards() {
 		// Fetch the merged data
 		const mergedData = await getMergedLocalisationSkuData();
 		// Return the LocalisationList with the fetched data
-		return <LocalisationList mergedKeyboardData={mergedData} />;
+		return <LocalisationOverview mergedKeyboardData={mergedData} />;
 	} catch (error) {
 		// Handle error fetching data
 		console.error("Failed to fetch merged localisation SKU data:", error);
@@ -23,17 +24,6 @@ export default function Page() {
 	return (
 		<main>
 			<h1 className={classes.warehouseTitle}>Magazyn</h1>
-			<form className={classes.searchForm}>
-				<input
-					className={classes.searchInput}
-					type="text"
-					name="sku-search"
-					id="sku-search"
-					placeholder="Szukaj"
-					required
-				></input>
-				<button className={classes.searchButton}>Icon</button>
-			</form>
 			
 			<Suspense fallback={<p className={classes.loading}>Loading...</p>}>
 				<Keyboards />
