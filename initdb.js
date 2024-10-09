@@ -10,6 +10,7 @@ const dummyStorageData = [
 		localisation: "A5",
 		sku: ["li233-gr-kl.4-pc", "li354-us-kl.5-pc", "hp293-us-kl.3-pr"],
 	},
+	
 ];
 
 // Create tables

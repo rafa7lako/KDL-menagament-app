@@ -17,7 +17,7 @@ export default function NavLinks() {
 			{links.map((link) => {
 				return (
 					<Link key={link.name} href={link.href} className={path === link.href ? `${classes.link} ${classes.active}` : classes.link}>
-						<p>{link.name}</p>
+						<p className={classes.linkName}>{link.name}</p>
 					</Link>
 				);
 			})}

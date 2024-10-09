@@ -1,10 +1,18 @@
 import Link from "next/link";
+import KdlLogo from "@/public/klawisze.png";
+import Image from "next/image";
 import classes from "./page.module.css";
 
 export default function Home() {
 	return (
 		<main className={`${classes.main} ${classes.flex}`}>
-			<div className={`${classes.logoContainer} ${classes.flex}`}></div>
+			<div className={`${classes.logoContainer} ${classes.flex}`}><Image
+					src={KdlLogo}
+					width={103.5}
+					height={102}
+					className={classes.logo}
+					alt="Logo klawiszedolaptopa"
+				/></div>
 			<div className={`${classes.secondContainer} ${classes.flex}`}>
 				<div className={`${classes.subContainer} ${classes.flex}`}>
 					<div className={classes.subSubContainer}></div>

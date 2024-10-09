@@ -23,6 +23,10 @@
 	color: var(--color-blue);
 }
 
+.linkName {
+	font-family: var(--font-geist-sans);
+}
+
 @media (min-width: 768px) {
 	.link {
 		flex: none;
