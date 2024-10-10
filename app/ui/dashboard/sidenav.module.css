@@ -23,6 +23,8 @@
 
 .logo {
     transition: scale .2s ease;
+    width: auto;
+    height: auto;
 }
 
 .logo:hover {

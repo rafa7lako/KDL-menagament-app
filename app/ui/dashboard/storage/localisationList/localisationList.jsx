@@ -1,12 +1,11 @@
-"use client";
 
-import { useState } from "react";
+
 
 import classes from "./localisationList.module.css";
 import LocalisationListItem from "../localisationListItem/localisationListItem";
 
 
-export default function LocalisationList({ filteredData }) {
+export default function LocalisationList({ filteredData, searchedSku }) {
 
 	return (
 		<>
@@ -16,6 +15,7 @@ export default function LocalisationList({ filteredData }) {
 						<LocalisationListItem
 							localisation={localisation}
 							key={localisation.localisation}
+							searchedSku={searchedSku}
 						/>
 					))}
 				</ul>

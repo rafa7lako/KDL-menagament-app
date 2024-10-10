@@ -1,0 +1,12 @@
+.btn {
+    background-color: transparent;
+	border: .1rem solid var(--color-cold-white);
+    color: var(--color-cold-white);
+	padding: 0 1rem;
+    cursor: pointer;
+}
+
+.btn:hover, .btn:focus,.active {
+    background-color: var(--color-cold-white);
+    color: var(--color-blue);
+}
