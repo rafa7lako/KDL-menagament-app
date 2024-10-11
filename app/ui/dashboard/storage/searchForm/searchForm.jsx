@@ -1,19 +1,22 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
 import classes from "./searchForm.module.css";
+import { StorageContext } from "@/app/store/context";
 
 export default function SearchForm({ setSearchTerm }) {
-	const [searchInput, setSearchInput] = useState("");
+	// const [searchInput, setSearchInput] = useState("");
 
-	function handleInputChange(event) {
+	// function handleInputChange(event) {
 	
-		const value = event.target.value;
-		setSearchInput(value);
-		if (setSearchTerm) {
-			setSearchTerm(value);
-		}
+	// 	const value = event.target.value;
+	// 	setSearchInput(value);
+	// 	if (setSearchTerm) {
+	// 		setSearchTerm(value);
+	// 	}
         
         
-	}
+	// }
+
+	const {searchInput, handleInputChange} = useContext(StorageContext)
 
 	return (
 		<form className={classes.searchForm} onSubmit={e=>{e.preventDefault()}}>

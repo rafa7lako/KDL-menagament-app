@@ -1,11 +1,12 @@
-
-
-
 import classes from "./localisationList.module.css";
 import LocalisationListItem from "../localisationListItem/localisationListItem";
+import { useContext } from "react";
+import { StorageContext } from "@/app/store/context";
 
 
-export default function LocalisationList({ filteredData, searchedSku }) {
+export default function LocalisationList({ filteredData }) {
+
+	const {searchedSku} = useContext(StorageContext)
 
 	return (
 		<>

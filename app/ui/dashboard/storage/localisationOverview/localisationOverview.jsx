@@ -1,34 +1,40 @@
 "use client";
 
-import { useState } from "react";
+import { useContext } from "react";
 import RegalRowBtns from "../regalRowBtns/regalRowBtns";
 import LocalisationList from "../localisationList/localisationList";
 import SearchForm from "../searchForm/searchForm";
 
+import { StorageContext } from "@/app/store/context";
+
+
+
 export default function LocalisationOverview({ mergedKeyboardData }) {
-	const [selectedRegalRow, setSelectedRegalRow] = useState("Razem");
-	const [searchedSku, setSearchedSku] = useState("");
+	// const [selectedRegalRow, setSelectedRegalRow] = useState("Razem");
+	// const [searchedSku, setSearchedSku] = useState("");
 
-	const handleRegalRowClick = (regalRow) => {
-		setSelectedRegalRow(regalRow); // Update the selected regal
-	};
+	// const handleRegalRowClick = (regalRow) => {
+	// 	setSelectedRegalRow(regalRow); // Update the selected regal
+	// };
 
+	const storageCtx = useContext(StorageContext)
 
+	console.log(storageCtx.selectedRegalRow);
 
 	let filteredData =
-		selectedRegalRow === "Razem"
+	storageCtx.selectedRegalRow === "Razem"
 			? mergedKeyboardData // Show all if "Razem" is selected
 			: mergedKeyboardData.filter(
 					(localisation) =>
-						localisation.localisation.startsWith(selectedRegalRow) // Filter by starting letter
+						localisation.localisation.startsWith(storageCtx.selectedRegalRow) // Filter by starting letter
 			  );
 
-	if (searchedSku) {
+	if (storageCtx.searchedSku) {
 		filteredData = filteredData
 			.map((localisation) => {
 				// Filter SKUs inside each localisation based on the search term
 				const matchingSkus = localisation.skus.filter((sku) =>
-					sku.toLowerCase().includes(searchedSku.toLowerCase())
+					sku.toLowerCase().includes(storageCtx.searchedSku.toLowerCase())
 				);
 
 				// Return a new object with the same localisation but only the matching SKUs
@@ -37,16 +43,16 @@ export default function LocalisationOverview({ mergedKeyboardData }) {
 			.filter((localisation) => localisation.skus.length > 0); // Only keep localisations that have matching SKUs
 	}
 
-
+	// const ctxValue = {}
 
 	return (
 		<>
 			<div className="flex">
-				<SearchForm setSearchTerm={setSearchedSku} />
-				<RegalRowBtns handleRegalRowClick={handleRegalRowClick} />
+				<SearchForm />
+				<RegalRowBtns />
 			</div>
 
-			<LocalisationList filteredData={filteredData} searchedSku={searchedSku} />
+			<LocalisationList filteredData={filteredData}  />
 		</>
 	);
 }
