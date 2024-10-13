@@ -19,7 +19,6 @@ export default function StorageContextProvider({children}) {
 
 	const handleRegalRowClick = (regalRow) => {
 		setSelectedRegalRow(regalRow); // Update the selected regal
-        console.log(selectedRegalRow);
 	};
 
     

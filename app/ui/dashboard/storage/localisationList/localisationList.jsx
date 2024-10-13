@@ -1,7 +1,8 @@
-import classes from "./localisationList.module.css";
 import LocalisationListItem from "../localisationListItem/localisationListItem";
 import { useContext } from "react";
 import { StorageContext } from "@/app/store/context";
+
+import classes from "./localisationList.module.css";
 
 
 export default function LocalisationList({ filteredData }) {

@@ -7,22 +7,11 @@ import SearchForm from "../searchForm/searchForm";
 
 import { StorageContext } from "@/app/store/context";
 
-
-
 export default function LocalisationOverview({ mergedKeyboardData }) {
-	// const [selectedRegalRow, setSelectedRegalRow] = useState("Razem");
-	// const [searchedSku, setSearchedSku] = useState("");
-
-	// const handleRegalRowClick = (regalRow) => {
-	// 	setSelectedRegalRow(regalRow); // Update the selected regal
-	// };
-
-	const storageCtx = useContext(StorageContext)
-
-	console.log(storageCtx.selectedRegalRow);
+	const storageCtx = useContext(StorageContext);
 
 	let filteredData =
-	storageCtx.selectedRegalRow === "Razem"
+		storageCtx.selectedRegalRow === "Razem"
 			? mergedKeyboardData // Show all if "Razem" is selected
 			: mergedKeyboardData.filter(
 					(localisation) =>
@@ -43,7 +32,6 @@ export default function LocalisationOverview({ mergedKeyboardData }) {
 			.filter((localisation) => localisation.skus.length > 0); // Only keep localisations that have matching SKUs
 	}
 
-	// const ctxValue = {}
 
 	return (
 		<>
@@ -52,7 +40,7 @@ export default function LocalisationOverview({ mergedKeyboardData }) {
 				<RegalRowBtns />
 			</div>
 
-			<LocalisationList filteredData={filteredData}  />
+			<LocalisationList filteredData={filteredData} />
 		</>
 	);
 }

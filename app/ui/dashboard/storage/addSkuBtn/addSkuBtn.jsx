@@ -2,9 +2,9 @@
 
 import { plusIcon } from "@/app/icons";
 import { useState } from "react";
-import classes from "./addSkuBtn.module.css";
-import { createSkuItem } from "@/lib/actions";
 import AddSkuForm from "../addSkuForm/addSkuForm";
+
+import classes from "./addSkuBtn.module.css";
 
 export default function AddSkuBtn({ localisation, refreshData }) {
 	// Accept refreshData as a prop
@@ -23,13 +23,12 @@ export default function AddSkuBtn({ localisation, refreshData }) {
 			{isAddBtnClicked && (
 				<AddSkuForm
 					localisation={localisation}
-					// isCloseBtnClicked={clickHandler}
 					refreshData={refreshData}
 					isAddBtnClicked={isAddBtnClicked}
 					closeFormHandler={closeFormHandler}
 				/>
 			)}
-			<button onClick={clickHandler} aria-label="Add SKU">
+			<button className={classes.addBtn} onClick={clickHandler} aria-label="Add SKU">
 				{plusIcon}
 			</button>
 		</>

@@ -1,9 +1,6 @@
 import { getMergedLocalisationSkuData } from "@/lib/keyboards";
 import classes from "./page.module.css";
 import { Suspense } from "react";
-
-
-import { StorageContext } from "@/app/store/context";
 import LocalisationOverviewWrapper from "@/app/ui/dashboard/storage/localisationOverviewWrapper/localisationOverviewWrapper";
 
 async function Keyboards() {
