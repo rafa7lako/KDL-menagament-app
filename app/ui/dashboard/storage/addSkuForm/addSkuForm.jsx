@@ -16,43 +16,65 @@ export default function AddSkuForm({
 	const [skuValue, setSkuValue] = useState(
 		editBtnClicked ? currentEditSku : ""
 	);
+	const [errorMessage, setErrorMessage] = useState("");
 
 	// Function to handle form submission for adding a new item
 	async function handleSubmit(event) {
 		event.preventDefault();
 
-		// Call the server function to create the SKU item
-		await createSkuItem({ sku: skuValue }, localisation);
+		try {
+            // Call the server function to create the SKU item
+            const result = await createSkuItem({ sku: skuValue }, localisation);
 
-		// After form submission, refresh the parent component data
-		if (refreshData) {
-			refreshData(); // Trigger parent component to re-render with updated data
-		}
+            // Check if the operation was successful
+            if (!result.success) {
+                // Set the error message state
+                setErrorMessage(result.message);
+                return; // Exit the function early to prevent further actions
+            }
 
-		// Reset the SKU input field
-		setSkuValue("");
+            // If successful, reset the error message and proceed
+            setErrorMessage(""); // Clear any previous error message
 
-		// Close the form after successful submission
-		onClose();
+            // Reset the SKU input field
+            setSkuValue("");
+
+            // Close the form after successful submission
+            onClose();
+
+        } catch (error) {
+            console.error("Unexpected error occurred:", error);
+            setErrorMessage("An unexpected error occurred. Please try again."); // Set a generic error message
+        }
 	}
 
 	async function handleEditSubmit(event) {
 		event.preventDefault();
 
-		// Call the server function to update the SKU in the database
-		await editSkuItem({ sku: skuValue }, currentEditSku, localisation);
+		try {
+            // Call the server function to update the SKU in the database
+            const result = await editSkuItem({ sku: skuValue }, currentEditSku, localisation);
 
-		// After form submission, refresh the parent component data
-		if (refreshData) {
-			refreshData(); // Trigger parent component to re-render with updated data
-		}
+            // Check if the operation was successful
+            if (!result.success) {
+                // Set the error message state
+                setErrorMessage(result.message);
+                return; // Exit the function early to prevent further actions
+            }
 
-		// Reset the SKU input field
-		setSkuValue("");
+            // If successful, reset the error message and proceed
+            setErrorMessage(""); // Clear any previous error message
+            // Refresh the data and reset the form
+            if (refreshData) {
+                refreshData();
+            }
+            setSkuValue("");  // Reset the SKU input field
+            onClose();  // Close the form after successful submission
 
-		// Close the form after successful submission
-		onClose();
-		// onEditClick(false); // Reset edit state only after editing
+        } catch (error) {
+            console.error("Unexpected error occurred:", error);
+            setErrorMessage("An unexpected error occurred. Please try again."); // Set a generic error message
+        }
 	}
 
 	// Function to handle closing the form when "x" is clicked
@@ -99,6 +121,7 @@ export default function AddSkuForm({
 					x
 				</button>
 			</div>
+			{errorMessage && <p style={{ color: 'red' }}>{errorMessage}</p>}
 		</form>
 	);
 }
