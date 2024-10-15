@@ -29,7 +29,7 @@ export default function AddSkuBtn({ localisation, refreshData }) {
 				/>
 			)}
 			<button className={classes.addBtn} onClick={clickHandler} aria-label="Add SKU">
-				{plusIcon}
+				{plusIcon}<p className={classes.addSkuParagraph}>Dodaj SKU</p>
 			</button>
 		</>
 	);

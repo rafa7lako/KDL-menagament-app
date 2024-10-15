@@ -8,6 +8,7 @@ import classes from "./nav-links.module.css";
 const links = [
 	{ name: "Home", href: "/dashboard" },
 	{ name: "Storage", href: "/dashboard/storage" },
+	{ name: "Tasks", href: "/dashboard/employee-tasks" },
 ];
 
 export default function NavLinks() {
@@ -16,7 +17,15 @@ export default function NavLinks() {
 		<>
 			{links.map((link) => {
 				return (
-					<Link key={link.name} href={link.href} className={path === link.href ? `${classes.link} ${classes.active}` : classes.link}>
+					<Link
+						key={link.name}
+						href={link.href}
+						className={
+							path === link.href
+								? `${classes.link} ${classes.active}`
+								: classes.link
+						}
+					>
 						<p className={classes.linkName}>{link.name}</p>
 					</Link>
 				);
