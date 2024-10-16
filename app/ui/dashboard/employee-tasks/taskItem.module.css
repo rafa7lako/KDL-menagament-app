@@ -1,0 +1,10 @@
+
+.taskItem {
+    background-color: blue;
+    color: #fff;
+    border-radius: .2rem;
+    position: absolute;
+    grid-column: 2 / 3;
+    height: 30px; /* Corresponding to 30 minutes in grid */
+    cursor: grab;
+}
