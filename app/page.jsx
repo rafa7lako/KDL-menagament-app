@@ -17,9 +17,14 @@ export default function Home() {
 				<div className={`${classes.subContainer} ${classes.flex}`}>
 					<div className={classes.subSubContainer}></div>
 					<p className={classes.text}>Welcome to KDL MGMT</p>
-					<Link href="/login" className={`${classes.login} ${classes.flex}`}>
+					<form className={classes.form}>
+						<label for='username'>Username: </label><input type="text" name="username" />
+						<label for='password'>Password: </label><input type="password" name="password" />
+						<button>Log In</button>
+					</form>
+					{/* <Link href="/login" className={`${classes.login} ${classes.flex}`}>
 						Log in
-					</Link>
+					</Link> */}
 				</div>
 			</div>
 		</main>

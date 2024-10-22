@@ -1,63 +1,76 @@
 "use client";
 
-import { useState } from "react";
-import { Reorder } from "framer-motion";
+import Image from "next/image";
 import classes from "./page.module.css";
 
-export default function Page() {
-	const [tasks, setTasks] = useState([1, 2, 3]);
+import gosling from "@/public/gos.jpg";
+import beaver from '@/public/6464.jpg'
 
+export default function Page() {
 	return (
 		<main>
 			<h1>Zadania pracowników</h1>
 			<div className={classes.itemContainer}>
-				<div className={classes.timeLines}>
-					<div className={classes.timeLineContainer}>
-						<p className={classes.time}>7:00</p>
-						<div className={classes.timeLine}></div>
-					</div>
-					<div className={classes.timeLineContainer}>
-						<p className={classes.time}>8:00</p>
-						<div className={classes.timeLine}></div>
-					</div>
-					<div className={classes.timeLineContainer}>
-						<p className={classes.time}>9:00</p>
-						<div className={classes.timeLine}></div>
-					</div>
-					<div className={classes.timeLineContainer}>
-						<p className={classes.time}>10:00</p>
-						<div className={classes.timeLine}></div>
-					</div>
-					<div className={classes.timeLineContainer}>
-						<p className={classes.time}>11:00</p>
-						<div className={classes.timeLine}></div>
-					</div>
-					<div className={classes.timeLineContainer}>
-						<p className={classes.time}>12:00</p>
-						<div className={classes.timeLine}></div>
-					</div>
-					<div className={classes.timeLineContainer}>
-						<p className={classes.time}>13:00</p>
-						<div className={classes.timeLine}></div>
-					</div>
-					<div className={classes.timeLineContainer}>
-						<p className={classes.time}>14:00</p>
-						<div className={classes.timeLine}></div>
-					</div>
-					<div className={classes.timeLineContainer}>
-						<p className={classes.time}>15:00</p>
-						<div className={classes.timeLine}></div>
-					</div>
-				</div>
-				<Reorder.Group values={tasks} onReorder={setTasks}>
-					<div className={classes.employeeOneTasksRow}>
-						{tasks.map((task) => (
-							<Reorder.Item value={task} key={task}>
-								<div className={classes.taskItem}>{task}</div>
-							</Reorder.Item>
-						))}
-					</div>
-				</Reorder.Group>
+				<table className={classes.table}>
+					<thead>
+						<tr>
+							<th scope="column">Pracownik</th>
+							<th scope="column">Trwające zadanie</th>
+							<th scope="column">Następne zadanie</th>
+							<th scope="column">Liczba oczekujących zadań</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<th
+								className={`${classes.flex} ${classes.cell}`}
+								scope="row"
+							>
+								<div className={classes.profilePicContainer}>
+									<Image
+									className={classes.profilePic}
+									src={gosling}
+									height={100}
+									width={200}
+									alt="employee profile picture"
+								/>
+								</div>
+								
+							</th>
+							<td className={classes.cell}>
+								<div className={classes.task}>TASK</div>
+							</td>
+							<td className={classes.cell}>
+								<div className={classes.task}>TASK</div>
+							</td>
+							<td className={classes.cell}>4</td>
+						</tr>
+						<tr>
+							<th
+								className={`${classes.flex} ${classes.cell}`}
+								scope="row"
+							>
+								<div className={classes.profilePicContainer}>
+									<Image
+									className={classes.profilePic}
+									src={beaver}
+									height={100}
+									width={200}
+									alt="employee profile picture"
+								/>
+								</div>
+								
+							</th>
+							<td className={classes.cell}>
+								<div className={classes.task}>TASK</div>
+							</td>
+							<td className={classes.cell}>
+								<div className={classes.task}>TASK</div>
+							</td>
+							<td className={classes.cell}>4</td>
+						</tr>
+					</tbody>
+				</table>
 			</div>
 		</main>
 	);
