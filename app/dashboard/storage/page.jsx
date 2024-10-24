@@ -5,12 +5,9 @@ import LocalisationOverviewWrapper from "@/app/ui/dashboard/storage/localisation
 
 async function Keyboards() {
 	try {
-		// Fetch the merged data
 		const mergedData = await getMergedLocalisationSkuData();
-		// Return the LocalisationList with the fetched data
 		return <LocalisationOverviewWrapper mergedKeyboardData={mergedData} />;
 	} catch (error) {
-		// Handle error fetching data
 		console.error("Failed to fetch merged localisation SKU data:", error);
 		return <p className={classes.loading}>Error loading data.</p>;
 	}

@@ -22,64 +22,70 @@ export default function AddSkuForm({
 	async function handleSubmit(event) {
 		event.preventDefault();
 
+		let result;
+
 		try {
-            // Call the server function to create the SKU item
-            const result = await createSkuItem({ sku: skuValue }, localisation);
+			// call the server function to create the SKU item
+			result = await createSkuItem({ sku: skuValue }, localisation);
 
-            // Check if the operation was successful
-            if (!result.success) {
-                // Set the error message state
-                setErrorMessage(result.message);
-                return; // Exit the function early to prevent further actions
-            }
+			// check if the operation was successful
+			// if (!result.success) {
+			// 	setErrorMessage(result.message);
+			// 	return;
+			// }
 
-            // If successful, reset the error message and proceed
-            setErrorMessage(""); // Clear any previous error message
+			setErrorMessage(""); // clear previous error message
 
-            // Reset the SKU input field
-            setSkuValue("");
+			// Reset SKU input field
+			setSkuValue("");
 
-            // Close the form after successful submission
-            onClose();
-
-        } catch (error) {
-            console.error("Unexpected error occurred:", error);
-            setErrorMessage("An unexpected error occurred. Please try again."); // Set a generic error message
-        }
+			onClose();
+			if (refreshData) {
+				refreshData();
+			}
+		} catch (error) {
+			console.error("Unexpected error occurred:", error);
+			setErrorMessage("An unexpected error occurred. Please try again."); // Set a generic error message
+		}
 	}
 
+	// Function to handle form submission for editing an item
 	async function handleEditSubmit(event) {
 		event.preventDefault();
 
 		try {
-            // Call the server function to update the SKU in the database
-            const result = await editSkuItem({ sku: skuValue }, currentEditSku, localisation);
+			// Call the server function to update the SKU in the database
+			const result = await editSkuItem(
+				{ sku: skuValue },
+				currentEditSku,
+				localisation
+			);
 
-            // Check if the operation was successful
-            if (!result.success) {
-                // Set the error message state
-                setErrorMessage(result.message);
-                return; // Exit the function early to prevent further actions
-            }
+			// Check if the operation was successful
+			if (!result.success) {
+				// Set the error message state
+				setErrorMessage(result.message);
+				return; // Exit the function early to prevent further actions
+			}
 
-            // If successful, reset the error message and proceed
-            setErrorMessage(""); // Clear any previous error message
-            // Refresh the data and reset the form
-            if (refreshData) {
-                refreshData();
-            }
-            setSkuValue("");  // Reset the SKU input field
-            onClose();  // Close the form after successful submission
-
-        } catch (error) {
-            console.error("Unexpected error occurred:", error);
-            setErrorMessage("An unexpected error occurred. Please try again."); // Set a generic error message
-        }
+			// If successful, reset the error message and proceed
+			setErrorMessage(""); // Clear any previous error message
+			// Refresh the data and reset the form
+			if (refreshData) {
+				refreshData();
+			}
+			setSkuValue(""); // Reset the SKU input field
+			onClose(); // Close the form after successful submission
+		} catch (error) {
+			console.error("Unexpected error occurred:", error);
+			setErrorMessage("An unexpected error occurred. Please try again."); // Set a generic error message
+		}
 	}
 
-	// Function to handle closing the form when "x" is clicked
+	// when close form
 	function onClose() {
-		// setIsClicked(true);
+		console.log("onclose triggered");
+
 		if (closeFormHandler) {
 			closeFormHandler();
 		}
@@ -88,7 +94,6 @@ export default function AddSkuForm({
 			// I got a bug here telling me the function doesn't exist. That's why i wrote it like this.
 			onEditClick();
 		}
-		// Close the form when cancel is clicked
 	}
 
 	return (
@@ -121,7 +126,7 @@ export default function AddSkuForm({
 					x
 				</button>
 			</div>
-			{errorMessage && <p style={{ color: 'red' }}>{errorMessage}</p>}
+			{errorMessage && <p style={{ color: "red" }}>{errorMessage}</p>}
 		</form>
 	);
 }
