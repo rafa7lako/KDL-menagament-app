@@ -1,19 +1,19 @@
-'use client'
+"use client";
 
 import { createContext, useState } from "react";
 
 export const StorageContext = createContext({
-	selectedRegalRow: 'Razem',
+	selectedRegalRow: "Razem",
 	setSelectedRegalRow: () => {},
-	searchedSku: '',
+	searchedSku: "",
 	setSearchedSku: () => {},
-    handleRegalRowClick: ()=>{},
-    searchInput: '',
-    setSearchInput: ()=>{},
-    handleInputChange: ()=>{}
+	handleRegalRowClick: () => {},
+	searchInput: "",
+	setSearchInput: () => {},
+	handleInputChange: () => {},
 });
 
-export default function StorageContextProvider({children}) {
+export default function StorageContextProvider({ children }) {
 	const [selectedRegalRow, setSelectedRegalRow] = useState("Razem");
 	const [searchedSku, setSearchedSku] = useState("");
 
@@ -21,21 +21,15 @@ export default function StorageContextProvider({children}) {
 		setSelectedRegalRow(regalRow); // Update the selected regal
 	};
 
-    
+	//SearchForm State
 
-    //SearchForm State
-
-    const [searchInput, setSearchInput] = useState("");
+	const [searchInput, setSearchInput] = useState("");
 
 	function handleInputChange(event) {
-	
 		const value = event.target.value;
 		setSearchInput(value);
-	
-			setSearchedSku(value);
-		
-        
-        
+
+		setSearchedSku(value);
 	}
 
 	const ctxValue = {
@@ -43,13 +37,15 @@ export default function StorageContextProvider({children}) {
 		setSelectedRegalRow: setSelectedRegalRow,
 		searchedSku: searchedSku,
 		setSearchedSku: setSearchedSku,
-        handleRegalRowClick: handleRegalRowClick,
-        searchInput:searchInput,
-        setSearchInput: setSearchInput,
-        handleInputChange:handleInputChange
+		handleRegalRowClick: handleRegalRowClick,
+		searchInput: searchInput,
+		setSearchInput: setSearchInput,
+		handleInputChange: handleInputChange,
 	};
 
-    return <StorageContext.Provider value={ctxValue}>
-        {children}
-    </StorageContext.Provider>
+	return (
+		<StorageContext.Provider value={ctxValue}>
+			{children}
+		</StorageContext.Provider>
+	);
 }

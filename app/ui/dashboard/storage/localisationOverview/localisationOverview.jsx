@@ -10,6 +10,7 @@ import { StorageContext } from "@/app/store/context";
 export default function LocalisationOverview({ mergedKeyboardData }) {
 	const storageCtx = useContext(StorageContext);
 
+	// the constant points to the data we display. It's either all the skus or the list filtered by their localisations.
 	let filteredData =
 		storageCtx.selectedRegalRow === "Razem"
 			? mergedKeyboardData // Show all if "Razem" is selected
@@ -18,6 +19,7 @@ export default function LocalisationOverview({ mergedKeyboardData }) {
 						localisation.localisation.startsWith(storageCtx.selectedRegalRow) // Filter by starting letter
 			  );
 
+	// if statement used by the searchbar. We filter based on the input.
 	if (storageCtx.searchedSku) {
 		filteredData = filteredData
 			.map((localisation) => {

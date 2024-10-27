@@ -2,7 +2,7 @@
 
 import { binIcon, editIcon } from "@/app/icons";
 import classes from "./skuListItem.module.css";
-import { deleteSkuByValue } from "@/lib/actions"; // Import the delete action
+import { deleteSkuByValue } from "@/lib/actions"; 
 import { useState } from "react";
 import AddSkuForm from "../addSkuForm/addSkuForm";
 

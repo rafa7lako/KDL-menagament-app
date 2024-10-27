@@ -1,12 +1,18 @@
 import { getMergedLocalisationSkuData } from "@/lib/keyboards";
-import classes from "./page.module.css";
 import { Suspense } from "react";
-import LocalisationOverviewWrapper from "@/app/ui/dashboard/storage/localisationOverviewWrapper/localisationOverviewWrapper";
+import LocalisationOverview from "@/app/ui/dashboard/storage/localisationOverview/localisationOverview";
+import StorageContextProvider from "@/app/store/context";
+
+import classes from "./page.module.css";
 
 async function Keyboards() {
 	try {
 		const mergedData = await getMergedLocalisationSkuData();
-		return <LocalisationOverviewWrapper mergedKeyboardData={mergedData} />;
+		return (
+			<StorageContextProvider>
+				<LocalisationOverview mergedKeyboardData={mergedData} />
+			</StorageContextProvider>
+		);
 	} catch (error) {
 		console.error("Failed to fetch merged localisation SKU data:", error);
 		return <p className={classes.loading}>Error loading data.</p>;

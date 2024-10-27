@@ -7,7 +7,6 @@ import AddSkuForm from "../addSkuForm/addSkuForm";
 import classes from "./addSkuBtn.module.css";
 
 export default function AddSkuBtn({ localisation, refreshData }) {
-	// Accept refreshData as a prop
 	const [isAddBtnClicked, setIsAddBtnClicked] = useState(false);
 
 	function clickHandler() {
@@ -19,7 +18,7 @@ export default function AddSkuBtn({ localisation, refreshData }) {
 	}
 
 	return (
-		<>
+		<li>
 			{isAddBtnClicked && (
 				<AddSkuForm
 					localisation={localisation}
@@ -31,6 +30,6 @@ export default function AddSkuBtn({ localisation, refreshData }) {
 			<button className={classes.addBtn} onClick={clickHandler} aria-label="Add SKU">
 				{plusIcon}<p className={classes.addSkuParagraph}>Dodaj SKU</p>
 			</button>
-		</>
+		</li>
 	);
 }

@@ -1,28 +1,32 @@
 "use client";
 
-import { useEffect, useState } from "react";
-import classes from "./localisationListItem.module.css";
+import { useEffect, useState} from "react";
 import SkuListItem from "../skuListItem/skuListItem";
 import AddSkuBtn from "../addSkuBtn/addSkuBtn";
 
+import classes from "./localisationListRow.module.css";
 // Import the server-side action
-import { fetchSkusByLocalisation } from "@/lib/actions"; // Update with actual path
+import { fetchSkusByLocalisation } from "@/lib/actions";
 
-export default function LocalisationListItem({ localisation, searchedSku }) {
+export default function LocalisationListRow({ localisation, searchedSku }) {
+	
 	const [skus, setSkus] = useState([]); // State for the SKUs
 	const [addSkuFormSubmitted, setAddSkuFormSubmitted] = useState(false);
 	const [deleteBtnClicked, setDeleteButtonClicked] = useState(false);
 	const [filteredSkus, setFilteredSkus] = useState([]); // State for filtered SKUs
 
-	// Function to refresh data after form submission
+	// Function to trigger a rerender after form submission, so that our new added or edited item shows up without having to manualy refresh the site
 	function refreshData() {
 		setAddSkuFormSubmitted((prevState) => !prevState);
 	}
 
-	// Function to load SKUs for the current localisation
+	// Function to load SKUs for the current localisation and updating the "skus" state. I used a try catch block because of the asynchronous nature of the data fetch, especially if we later move to a different database.
 	async function loadSkus() {
 		try {
+			// We fetch the needed data through the fetchSkuByLocalisation function from action.js
 			const fetchedSkus = await fetchSkusByLocalisation(localisation.localisation);
+
+			// We insert the fetched data into the skus state
 			setSkus(fetchedSkus);
 		} catch (error) {
 			console.error("Failed to load SKUs:", error);
@@ -31,7 +35,9 @@ export default function LocalisationListItem({ localisation, searchedSku }) {
 
 	// Effect to load SKUs when the localisation or form submission changes
 	useEffect(() => {
-		loadSkus();
+		// Fetch skus data and update the"skus" state.
+ 		loadSkus();
+		// Reseting the state for the button clicked listener.
 		setDeleteButtonClicked(false);
 	}, [localisation.localisation, addSkuFormSubmitted, deleteBtnClicked]);
 
@@ -53,7 +59,6 @@ export default function LocalisationListItem({ localisation, searchedSku }) {
 		<li className={classes.localisationListItem}>
 			<p className={classes.localisationTitle}>{localisation.localisation}</p>
 			<ul className={classes.skuList}>
-				{/* Show filtered SKUs */}
 				{filteredSkus.length === 0 ? (
 					<p className={classes.noSkus}>No SKUs found</p>
 				) : (
@@ -67,8 +72,8 @@ export default function LocalisationListItem({ localisation, searchedSku }) {
 						/>
 					))
 				)}
-			</ul>
 			<AddSkuBtn localisation={localisation.localisation} refreshData={refreshData} />
+			</ul>
 		</li>
 	);
 }
