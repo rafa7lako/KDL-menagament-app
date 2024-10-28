@@ -65,10 +65,11 @@ export default function LocalisationListRow({ localisation, searchedSku }) {
 					filteredSkus.map((sku) => (
 						<SkuListItem
 							sku={sku}
-							key={sku}
+							key={localisation + sku}
 							refreshData={refreshData}
 							setDeleteButtonClicked={setDeleteButtonClicked}
 							localisation={localisation.localisation}
+							skusList={skus}
 						/>
 					))
 				)}

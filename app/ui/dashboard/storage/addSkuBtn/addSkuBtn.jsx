@@ -9,9 +9,9 @@ import classes from "./addSkuBtn.module.css";
 export default function AddSkuBtn({ localisation, refreshData }) {
 	const [isAddBtnClicked, setIsAddBtnClicked] = useState(false);
 
-	function clickHandler() {
-		setIsAddBtnClicked(true);
-	}
+	// function clickHandler() {
+	// 	setIsAddBtnClicked(true);
+	// }
 
 	function closeFormHandler() {
 		setIsAddBtnClicked((prevState) => !prevState);
@@ -19,17 +19,23 @@ export default function AddSkuBtn({ localisation, refreshData }) {
 
 	return (
 		<li>
-			{isAddBtnClicked && (
+			{isAddBtnClicked ? (
 				<AddSkuForm
 					localisation={localisation}
 					refreshData={refreshData}
 					isAddBtnClicked={isAddBtnClicked}
 					closeFormHandler={closeFormHandler}
 				/>
+			) : (
+				<button
+					className={classes.addBtn}
+					onClick={closeFormHandler}
+					aria-label="Add SKU"
+				>
+					{plusIcon}
+					<p className={classes.addSkuParagraph}>Dodaj SKU</p>
+				</button>
 			)}
-			<button className={classes.addBtn} onClick={clickHandler} aria-label="Add SKU">
-				{plusIcon}<p className={classes.addSkuParagraph}>Dodaj SKU</p>
-			</button>
 		</li>
 	);
 }

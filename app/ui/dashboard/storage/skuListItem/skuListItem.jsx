@@ -11,6 +11,7 @@ export default function SkuListItem({
 	setDeleteButtonClicked,
 	localisation,
 	refreshData,
+	skusList
 }) {
 	const [editBtnClicked, setEditBtnClicked] = useState(false);
 
@@ -28,9 +29,9 @@ export default function SkuListItem({
 		setDeleteButtonClicked(true);
 	}
 
-	function editBtnHandler() {
-		setEditBtnClicked((prevState) => !prevState);
-	}
+	// function editBtnHandler() {
+	// 	setEditBtnClicked((prevState) => !prevState);
+	// }
 
 	function editBtnClickedHandler() {
 		setEditBtnClicked((prevState) => !prevState);
@@ -44,7 +45,7 @@ export default function SkuListItem({
 					<div className={classes.actionButtonContainer}>
 						<button
 							className={`${classes.actionButton} ${classes.editBtn}`}
-							onClick={editBtnHandler}
+							onClick={editBtnClickedHandler}
 						>
 							<i>{editIcon}</i>
 						</button>
@@ -64,6 +65,7 @@ export default function SkuListItem({
 					currentEditSku={sku}
 					editBtnClicked={editBtnClicked}
 					refreshData={refreshData}
+					skusList={skusList}
 				/>
 			)}
 		</>

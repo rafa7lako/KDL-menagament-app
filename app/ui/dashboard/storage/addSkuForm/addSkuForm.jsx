@@ -12,6 +12,7 @@ export default function AddSkuForm({
 	currentEditSku,
 	editBtnClicked,
 	onEditClick,
+	skusList
 }) {
 	const [skuValue, setSkuValue] = useState(
 		editBtnClicked ? currentEditSku : ""
@@ -28,11 +29,12 @@ export default function AddSkuForm({
 			// call the server function to create the SKU item
 			result = await createSkuItem({ sku: skuValue }, localisation);
 
-			// check if the operation was successful
-			// if (!result.success) {
-			// 	setErrorMessage(result.message);
-			// 	return;
-			// }
+			if (!result.success) {
+				// Set the error message state
+				setErrorMessage(result.message);
+				return; // Exit the function early to prevent further actions
+			}
+
 
 			setErrorMessage(""); // clear previous error message
 
@@ -45,7 +47,7 @@ export default function AddSkuForm({
 			}
 		} catch (error) {
 			console.error("Unexpected error occurred:", error);
-			setErrorMessage("An unexpected error occurred. Please try again."); // Set a generic error message
+			setErrorMessage("An unexpected error occurred. Please try again.");
 		}
 	}
 
@@ -78,7 +80,7 @@ export default function AddSkuForm({
 			onClose(); // Close the form after successful submission
 		} catch (error) {
 			console.error("Unexpected error occurred:", error);
-			setErrorMessage("An unexpected error occurred. Please try again."); // Set a generic error message
+			setErrorMessage("An unexpected error occurred. Please try again."); 
 		}
 	}
 
@@ -107,8 +109,8 @@ export default function AddSkuForm({
 				placeholder={placeholderText}
 				id="skuInput"
 				name="skuInput"
-				value={skuValue} // Controlled input
-				onChange={(e) => setSkuValue(e.target.value)} // Update state on input change
+				value={skuValue} 
+				onChange={(e) => setSkuValue(e.target.value)}
 				required
 			/>
 			<div className={classes.skuFormBtns}>
@@ -121,7 +123,7 @@ export default function AddSkuForm({
 				<button
 					type="button"
 					className={`${classes.skuFormBtn} ${classes.xBtn}`}
-					onClick={onClose} // Handle cancel (close form)
+					onClick={onClose} 
 				>
 					x
 				</button>
