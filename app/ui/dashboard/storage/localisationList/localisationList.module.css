@@ -14,7 +14,7 @@
 	gap: 1rem;
 	width: 100%;
 	font-size: 0.8rem;
-	margin-bottom: .6rem;
+	margin-bottom: 0;
 	color: gray;
 }
 
@@ -54,4 +54,10 @@
 .localisationListContainer {
 	scrollbar-width: thin; /* Make the scrollbar thinner */
 	scrollbar-color: var(--color-grey) var(--color-light-grey); /* thumb color, track color */
+}
+
+@media (min-width: 768px) {
+	.listLabels{
+		margin-bottom: .6rem;
+	}
 }

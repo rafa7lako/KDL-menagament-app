@@ -21,7 +21,7 @@
 	flex-grow: 1;
 	flex-direction: column;
 	gap: 1rem;
-	margin-top: 1rem;
+	/* margin-top: 1rem; */
 }
 
 .subContainer {
@@ -81,6 +81,7 @@
 
 	.secondContainer {
 		flex-direction: row;
+    margin-top: 1rem;
 	}
 
 	.subContainer {

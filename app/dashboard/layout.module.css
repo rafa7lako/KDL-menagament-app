@@ -11,8 +11,8 @@
 
 .secondContainer {
     flex-grow: 1;
-    padding: 1.5rem;
-
+    padding: 1.5rem ;
+    padding-top: 0;
 }
 
 @media (min-width: 768px) {

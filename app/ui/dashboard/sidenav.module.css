@@ -1,8 +1,8 @@
 .firstContainer {
-    display: flex;
+    
     height: 100%;
     flex-direction: column;
-    padding: 1rem 0.75rem;
+    padding: 1rem 1.5rem 0;
 }
 
 .firstContainer p {
@@ -25,6 +25,9 @@
     transition: scale .2s ease;
     width: auto;
     height: auto;
+    transform: scale(.7);
+    margin-bottom: -1rem;
+    margin-left: -.5rem;
 }
 
 .logo:hover {
@@ -65,5 +68,11 @@
 
     .linksBackground {
         display: block;
+    }
+
+    .logo {
+        transform: scale(1);
+        margin-bottom: 0;
+        margin-left: 0;
     }
 }
